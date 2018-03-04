@@ -32,7 +32,7 @@ type
   @member(SecondOctet Second octet)
   @member(ThirdOctet Third octet)
   @member(FourthOctet Fourth octet)
-  @member(Port Port value)
+  @member(Port Port to access)
 }
 {$ENDREGION}
 
@@ -60,7 +60,7 @@ type
     @param(SecondOctet Second octet)
     @param(ThirdOctet Third octet)
     @param(FourthOctet Fourth octet)
-    @param(Port Port value)
+    @param(Port Port to access)
   )
   @member(
     New Create a new @classname as interface
@@ -68,7 +68,7 @@ type
     @param(SecondOctet Second octet)
     @param(ThirdOctet Third octet)
     @param(FourthOctet Fourth octet)
-    @param(Port Port value)
+    @param(Port Port to access)
   )
 }
 {$ENDREGION}
