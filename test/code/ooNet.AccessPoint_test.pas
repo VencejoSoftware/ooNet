@@ -29,6 +29,7 @@ type
     procedure AddressIsIP;
     procedure ProtocolIsUPD;
     procedure CredentialIsAdmin;
+    procedure TextIsSomething;
   end;
 
 implementation
@@ -47,6 +48,11 @@ procedure TNetAccessPointTest.CredentialIsAdmin;
 begin
   CheckEquals('admin', _AccessPoint.Credential.User);
   CheckEquals('1234', _AccessPoint.Credential.Password);
+end;
+
+procedure TNetAccessPointTest.TextIsSomething;
+begin
+  CheckEquals('upd://admin:1234@192.168.1.2:666', _AccessPoint.Text);
 end;
 
 procedure TNetAccessPointTest.SetUp;

@@ -27,6 +27,7 @@ type
   @member(Address Network address)
   @member(Protocol Network protocol)
   @member(Credential Access credential)
+  @member(Text Acces point value as text)
 }
 {$ENDREGION}
   INetAccessPoint = interface
@@ -34,6 +35,7 @@ type
     function Address: INetAddress;
     function Protocol: INetProtocol;
     function Credential: INetCredential;
+    function Text: String;
   end;
 
 {$REGION 'documentation'}
@@ -42,6 +44,7 @@ type
   @member(Address @seealso(INetAccessPoint.Address))
   @member(Protocol @seealso(INetAccessPoint.Protocol))
   @member(Credential @seealso(INetAccessPoint.Credential))
+  @member(Text @seealso(INetAccessPoint.Text))
   @member(
     Create Object constructor
     @param(Address Network address)
@@ -66,6 +69,7 @@ type
     function Address: INetAddress;
     function Protocol: INetProtocol;
     function Credential: INetCredential;
+    function Text: String;
     constructor Create(const Address: INetAddress; const Protocol: INetProtocol; const Credential: INetCredential);
     class function New(const Address: INetAddress; const Protocol: INetProtocol; const Credential: INetCredential)
       : INetAccessPoint;
@@ -86,6 +90,15 @@ end;
 function TNetAccessPoint.Credential: INetCredential;
 begin
   Result := _Credential;
+end;
+
+function TNetAccessPoint.Text: String;
+begin
+  Result := _Address.Text;
+  if Assigned(_Credential) then
+    Result := _Credential.Text + '@' + Result;
+  if Assigned(_Protocol) and (Length(_Protocol.Text) > 0) then
+    Result := _Protocol.Text + '://' + Result;
 end;
 
 constructor TNetAccessPoint.Create(const Address: INetAddress; const Protocol: INetProtocol;

@@ -14,6 +14,9 @@ unit ooNet.Credential;
 
 interface
 
+uses
+  SysUtils;
+
 type
 
 {$REGION 'documentation'}
@@ -22,12 +25,14 @@ type
   Network authentication credential abstract definition
   @member(User User identification)
   @member(Password Password to access)
+    @member(Text Simplified text for credential)
 }
 {$ENDREGION}
   INetCredential = interface
     ['{03BE99D6-205D-4DAE-99D0-63D67C5A4E83}']
     function User: String;
     function Password: String;
+    function Text: String;
   end;
 
 {$REGION 'documentation'}
@@ -35,6 +40,7 @@ type
   @abstract(Implementation of @link(INetCredential))
   @member(User @seealso(INetCredential.User))
   @member(Password @seealso(INetCredential.Password))
+  @member(Text @seealso(INetCredential.Text))
   @member(
     Create Object constructor
     @param(User User identification)
@@ -54,6 +60,7 @@ type
   public
     function User: String;
     function Password: String;
+    function Text: String;
     constructor Create(const User, Password: String);
     class function New(const User, Password: String): INetCredential;
   end;
@@ -68,6 +75,11 @@ end;
 function TNetCredential.Password: String;
 begin
   Result := _Password;
+end;
+
+function TNetCredential.Text: String;
+begin
+  Result := Format('%s:%s', [_User, _Password]);
 end;
 
 constructor TNetCredential.Create(const User, Password: String);
