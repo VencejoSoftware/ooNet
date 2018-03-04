@@ -11,7 +11,8 @@ uses
   ooNet.Address.IP_test in '..\code\ooNet.Address.IP_test.pas',
   ooNet.Protocol_test in '..\code\ooNet.Protocol_test.pas',
   ooNet.Credential_test in '..\code\ooNet.Credential_test.pas',
-  ooNet.AccessPoint_test in '..\code\ooNet.AccessPoint_test.pas';
+  ooNet.AccessPoint_test in '..\code\ooNet.AccessPoint_test.pas',
+  ooNet.Encoding_test in '..\code\ooNet.Encoding_test.pas';
 
 {R *.RES}
 
